@@ -19,13 +19,13 @@ Also includes SooKoll's fork which added opacity sliders https://github.com/sook
           title: "Overlays",
           layers: [
             {
-              title: "Layer One"
-              layer: layer_one
+              title: "Layer One",
+              layer: layer_one,
               enableOpacitySliders: true
             },
             {
-              title: "Layer Two"
-              layer: layer_two
+              title: "Layer Two",
+              layer: layer_two,
               enableOpacitySliders: false
             }
           ]
@@ -34,13 +34,13 @@ Also includes SooKoll's fork which added opacity sliders https://github.com/sook
           title: "Base Layers",
           layers: [
             {
-              title: "Base One"
-              layer: base_one
+              title: "Base One",
+              layer: base_one,
               enableOpacitySliders: true
             },
             {
-              title: "Base Two"
-              layer: base_two
+              title: "Base Two",
+              layer: base_two,
               enableOpacitySliders: false
             }
           ]
@@ -48,7 +48,7 @@ Also includes SooKoll's fork which added opacity sliders https://github.com/sook
     });
 
     //Add filter legend
-    self.map.addControl(layerSwitcher);
+    this.map.addControl(layerSwitcher);
 
 ## License
 
