@@ -20,7 +20,6 @@
         var options = opt_options || {};
         this.layers = options.layers || null;
 
-        //If no layers return;
         if(this.layers === null || this.layers.length === 0)
             return;
 
@@ -47,8 +46,6 @@
         element.appendChild(this.panel);
         ol.control.LayerSwitcher.enableTouchScroll_(this.panel);
 
-        // opacity slider (true|false)
-        this.enableOpacitySliders = options.enableOpacitySliders || false;
         this.onOpacityChange = options.onOpacityChange || null;
         this.onLayerToggle = options.onLayerToggle || null;
 
@@ -202,14 +199,18 @@
             var lyr = lyrOpt['layer']
 
             li.className = 'layer';
-            var input = document.createElement('input'),
+            
+            var container = document.createElement('div'),
+                input = document.createElement('input'),
                 input_o = document.createElement('input');
+
             if (lyr.get('type') === 'base') {
                 input.type = 'radio';
                 input.name = 'base';
             } else {
                 input.type = 'checkbox';
             }
+
             input.id = lyrId;
             input.checked = lyr.get('visible');
             input.onchange = function (e) {
@@ -219,7 +220,8 @@
                     this_.onLayerToggle(e.target.checked, lyr);
                 }
             };
-            li.appendChild(input);
+
+            container.appendChild(input);
 
             label.htmlFor = lyrId;
             label.innerHTML = lyrTitle;
@@ -229,8 +231,9 @@
                 label.className += ' disabled';
             }
 
-            li.appendChild(label);
+            container.appendChild(label);
 
+            // opacity slider (true|false)
             if (lyrOpt['enableOpacitySliders']) {
                 input_o.type = 'range';
                 input_o.className = 'opacity';
@@ -246,8 +249,18 @@
                     }
 
                 };
-                li.appendChild(input_o);
+                container.appendChild(input_o);
             }
+
+            li.appendChild(container);
+
+            if (lyrOpt['legend']) {
+                var legend = document.createElement('div');
+                legend.className = 'legend';
+                legend.innerHTML = lyrOpt['legend'];
+                li.appendChild(legend);
+            }
+
 
         }
 
