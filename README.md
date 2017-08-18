@@ -2,7 +2,7 @@
 
 Grouped layer list control for an OpenLayer v3/v4 map.
 
-Forked version of Matt Walker's Layer Switcher.
+Forked version of Matt Walker's Layer Switcher: https://github.com/walkermatt/ol3-layerswitcher
 
 # How to setup
 
