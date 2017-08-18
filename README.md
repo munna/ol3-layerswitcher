@@ -4,6 +4,8 @@ Forked version of Matt Walker's Layer Switcher: https://github.com/walkermatt/ol
 
 Also includes SooKoll's fork which added opacity sliders https://github.com/sookoll/ol3-layerswitcher
 
+Examples have not been updated however here is a quick jsfiddle: https://jsfiddle.net/jnjvynsb/1/
+
 # How to setup
 
 
