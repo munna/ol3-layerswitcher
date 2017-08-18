@@ -1,6 +1,7 @@
 # OpenLayers LayerSwitcher
 
 Forked version of Matt Walker's Layer Switcher: https://github.com/walkermatt/ol3-layerswitcher
+
 Also includes SooKoll's fork which added opacity sliders https://github.com/sookoll/ol3-layerswitcher
 
 # How to setup
