@@ -66,6 +66,7 @@
 
 .layer-switcher li.layer {
     display: table;
+    width:100%;
 }
 
 .layer-switcher li.layer div {
