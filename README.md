@@ -12,7 +12,7 @@ Forked version of Matt Walker's Layer Switcher: https://github.com/walkermatt/ol
         onOpacityChange: function(opacity, layer){
           console.log("Do something")
         },
-        onToggleLayer: function(visible, layer){
+        onLayerToggle: function(visible, layer){
           console.log("Do something")
         },
         layers: [{
