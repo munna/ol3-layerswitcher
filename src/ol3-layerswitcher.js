@@ -182,7 +182,7 @@
 
         var li = document.createElement('li');
 
-        var lyrTitle = lyrOpt['title'] || lyr.get('title');
+        var lyrTitle = lyrOpt['title'];
         var lyrId = ol.control.LayerSwitcher.uuid();
 
         var label = document.createElement('label');
