@@ -28,7 +28,8 @@ Examples have not been updated however here is a quick jsfiddle: https://jsfiddl
             {
               title: "Layer Two",
               layer: layer_two,
-              enableOpacitySliders: false
+              enableOpacitySliders: false,
+              legend: "Something about <strong>layer</strong>"
             }
           ]
         },
