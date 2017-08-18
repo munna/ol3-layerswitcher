@@ -66,23 +66,15 @@
 
 .layer-switcher li.layer {
     display: table;
-    width: 100%;
+}
+
+.layer-switcher li.layer div {
+    display: table-row;
 }
 
 .layer-switcher li.layer label, .layer-switcher li.layer input {
-    display: block;
-    float: left;
+    display: table-cell;
     vertical-align: sub;
-}
-
-.layer-switcher li.layer input.opacity {
-    width: 60px;
-    display: block;
-    float: right;
-}
-
-.layer-switcher label.disabled {
-    opacity:0.4;
 }
 
 .layer-switcher input {
