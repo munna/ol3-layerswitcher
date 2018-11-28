@@ -1,3 +1,7 @@
+.layer-switcher .hide {
+    display: none;
+}
+
 .layer-switcher.shown.ol-control {
     background-color: transparent;
 }
@@ -6,11 +10,37 @@
     background-color: transparent;
 }
 
-.layer-switcher {
+.layer-switcher {    
     position: absolute;
-    top: 3.5em;
-    right: 0.5em;
-    text-align: left;
+    top: 0;
+    right: 0;
+    border-radius: 0;
+    border: 0;
+    box-shadow: none !important;
+    padding: 0;
+    background: transparent;
+    border-radius: 0px;
+}
+
+.layer-switcher .button-container {    
+    margin-top: 5px;
+    margin-right: 5px;
+    padding: 2px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+}
+
+.layer-switcher .panel-header:before, 
+.layer-switcher .panel-header:after, 
+.layer-switcher .button-container:before, 
+.layer-switcher .button-container:after {    
+    display: table;
+    content: " ";
+}
+
+.layer-switcher .panel-header:after,
+.layer-switcher .button-container:after {
+    clear: both;
 }
 
 .layer-switcher.shown {
@@ -21,18 +51,74 @@
     padding: 0 1em 0 0;
     margin: 0;
     border: 4px solid #eee;
-    border-radius: 4px;
-    background-color: white;
+    border-radius: 0;
+    background-color: #fff;
     display: none;
-    max-height: 100%;
-    overflow-y: auto;
+    height: 100%;
+    overflow-y: scroll;
+    box-shadow: black 3px -5px 20px 0px;    
+    position: relative;
+}
+
+.layer-switcher .panel .panel-header{    
+    width: 100%;
+}
+
+.layer-switcher .panel .panel-layers{
+    margin-top: -25px;
+}
+
+.layer-switcher .panel .panel-close{
+    border: 0;
+    background: none;
+    float: right;
+}
+
+.layer-switcher .panel .panel-close span {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    overflow: hidden;
+}
+
+.layer-switcher .panel .panel-close span:before,.layer-switcher .panel .panel-close span:after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: 1px;
+    background: #333;
+    height: 2px;
+}
+
+.layer-switcher .panel .panel-close span:before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.layer-switcher .panel .panel-close span:after {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.layer-switcher .panel .panel-close span:hover:before, .layer-switcher .panel .panel-close span:hover:after {
+    background: #e60303;
 }
 
 .layer-switcher.shown .panel {
     display: block;
 }
 
-.layer-switcher button {
+.layer-switcher button.toggle {
     float: right;
     width: 38px;
     height: 38px;
@@ -41,13 +127,15 @@
     background-position: 2px;
     background-color: white;
     border: none;
+    border-radius: 2px;
+    margin: 1px;
 }
 
-.layer-switcher.shown button {
+.layer-switcher.shown button.toggle {
     display: none;
 }
 
-.layer-switcher button:focus, .layer-switcher button:hover {
+.layer-switcher button.toggle:focus, .layer-switcher button.toggle:hover {
     background-color: white;
 }
 
@@ -62,15 +150,28 @@
 
 .layer-switcher li.group > label {
     font-weight: bold;
+    width: 100%;
+    margin-bottom: 10px;
+    display: block;
 }
 
 .layer-switcher li.layer {
     display: table;
-    width:100%;
+    position: relative;
+    width: 100%;
 }
 
-.layer-switcher li.layer div {
-    display: table-row;
+.layer-switcher li.layer .layer-control::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.layer-switcher li.layer label, 
+.layer-switcher li.layer input {
+    display: block;
+    float: left;
+    vertical-align: sub;
 }
 
 .layer-switcher li.layer input.opacity {
@@ -78,12 +179,68 @@
     display: block;
     float: right;
     margin-left: 20px;
+    /** IE Fix */
+    padding: 0px;
 }
 
-.layer-switcher li.layer label, .layer-switcher li.layer input {
+.layer-switcher li.layer div.legend {    
     display: block;
-    float: left;
-    vertical-align: sub;
+    width: 100%;
+    overflow: hidden;
+    position: relative; 
+    opacity: 1;   
+    transition: all 1s;
+    margin: 5px 0px 10px 0px;
+}
+
+.layer-switcher li.layer div.legend.legend-hidden {
+    display: none;
+    opacity: 0;
+}
+
+.layer-switcher li.layer button.legend-toggle {
+    position: absolute;
+    left: -22px;
+    background: transparent;
+    color: black;
+    border: 0;
+    padding: 0;
+}
+
+.layer-switcher li.layer button.legend-toggle:focus {
+    outline: 0;
+}
+
+.layer-switcher li.layer button .bar1, 
+.layer-switcher li.layer button .bar2, 
+.layer-switcher li.layer button .bar3 {
+    width: 16px;
+    height: 2px;
+    background-color: #333;
+    margin: 3px 0;
+    transition: .4s;
+    display: block;
+}
+
+.layer-switcher li.layer button.open .bar1 {
+    -moz-transform: rotate(-45deg) translate(-4px, 5px);
+    -o-transform: rotate(-45deg) translate(-4px, 5px);
+    -ms-transform: rotate(-45deg) translate(-4px, 5px);
+    -webkit-transform: rotate(-45deg) translate(-4px, 5px);
+    transform: rotate(-45deg) translate(-4px, 5px);
+}
+
+.layer-switcher li.layer button.open .bar2 {
+    opacity: 0;
+
+}
+
+.layer-switcher li.layer button.open .bar3 {
+    -moz-transform: rotate(45deg) translate(-2px, -3px);
+    -o-transform: rotate(45deg) translate(-2px, -3px);
+    -ms-transform: rotate(45deg) translate(-2px, -3px);
+    -webkit-transform: rotate(45deg) translate(-2px, -3px);
+    transform: rotate(45deg) translate(-2px, -3px);
 }
 
 .layer-switcher input {
@@ -102,4 +259,15 @@
 .layer-switcher.touch ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+.layer-switcher .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
 }
