@@ -1,17 +1,19 @@
 {
-  "name": "ol3-layerswitcher",
-  "version": "1.1.2",
-  "description": "Layer switcher control for OpenLayers v3/v4",
+  "name": "ol-layerlist",
+  "version": "1.1.6",
+  "description": "Layer switcher control for OpenLayers v3/v4/v5",
+  "main": "dist/ol-layerlist.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/munna/ol3-layerswitcher.git"
   },
-  "author": "Matt Walker (http://longwayaround.org.uk)",
+  "author": "Munna Bhakta (http://munnabhakta.com)",
   "contributors": [
     "Thomas Gratier <thomas_gratier@yahoo.fr>",
     "Poul Kjeldager Sørensen <pks@s-innovations.net>",
     "Micho García <micho.garcia@geomati.co>",
-    "olivierdalang <olivier.dalang@gmail.com>"
+    "olivierdalang <olivier.dalang@gmail.com>",
+    "Munna Bhakta <munna.bhakta1001@gmail.com>"
   ],
   "keywords": [
     "openlayers",
@@ -23,17 +25,22 @@
     "url": "https://github.com/walkermatt/ol3-layerswitcher/issues"
   },
   "scripts": {
-    "doc": "node_modules/.bin/jsdoc --explain src/ol3-layerswitcher.js | node_modules/.bin/dirtydocs util/README.md > README.md"
+    "build": "rollup --config rollup.config.js",
+    "doc": "documentation readme src/ol-layerlist.js --section=API"
   },
-  "dependencies": {
-    "ol": "~5.3.0"
+  "peerDependencies": {
+    "ol": ">=5.0.0"
   },
   "devDependencies": {
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "documentation": "^5.3.5",
     "expect.js": "~0.3.1",
-    "jquery": "~1.11.1",
-    "lodash": "~2.4.1",
+    "jquery": ">=3.0.0",
     "mocha": "~1.20.1",
-    "jsdoc": "~3.3.0-beta1",
-    "dirtydocs": "0.0.1"
+    "rollup": "^0.41.4",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0"
   }
 }

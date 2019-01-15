@@ -48,7 +48,8 @@
                             ratio: 1,
                             params: {'LAYERS': 'show:0'},
                             url: "https://ons-inspire.esriuk.com/arcgis/rest/services/Administrative_Boundaries/Countries_December_2016_Boundaries/MapServer"
-                        })
+                        }),
+                        enableOpacitySliders: true
                     })
                 ]
             })
@@ -60,7 +61,8 @@
     });
 
     var layerSwitcher = new ol.control.LayerSwitcher({
-        tipLabel: 'Légende' // Optional label for button
+        tipLabel: 'Légende', // Optional label for button
+        layers:map.getLayers()
     });
     map.addControl(layerSwitcher);
 
