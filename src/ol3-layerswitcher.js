@@ -8,7 +8,7 @@
     }
 }(this, function (ol) {
     /**
-     * OpenLayers v3/v4 Layer Switcher Control.
+     * OpenLayers v3/v4/v5 Layer Switcher Control.
      * See [the examples](./examples) for usage.
      * @constructor
      * @extends {ol.control.Control}
@@ -26,7 +26,7 @@
         var tipLabel = options.tipLabel ?
           options.tipLabel : 'Legend';
 
-        this.mapListeners = [];
+        this.listenerKeys = [];
 
         this.hiddenClassName = 'ol-unselectable ol-control layer-switcher';
         if (ol.control.LayerSwitcher.isTouchDevice_()) {
@@ -111,22 +111,29 @@
         this.renderLayers_(this.layers, ul);
 
     };
-
+  
     /**
      * Set the map instance the control is associated with.
      * @param {ol.Map} map The map instance.
      */
     ol.control.LayerSwitcher.prototype.setMap = function (map) {
         // Clean up listeners associated with the previous map
-        for (var i = 0, key; i < this.mapListeners.length; i++) {
-            ol.Observable.unByKey(this.mapListeners[i]);
+        if(this.listenerKeys!=null){
+            for (var i = 0, key; i < this.listenerKeys.length; i++) {
+                ol.Observable.unByKey(this.listenerKeys[i]);
+            }
+            this.listenerKeys.length = 0;
         }
-        this.mapListeners.length = 0;
+        else{
+            this.listenerKeys=[];
+        }
+        
         // Wire up listeners etc. and store reference to new map
+     
         ol.control.Control.prototype.setMap.call(this, map);
         if (map) {
             var this_ = this;
-            this.mapListeners.push(map.on('pointerdown', function () {
+            this.listenerKeys.push(map.on('pointerdown', function () {
                 this_.hidePanel();
             }));
             this.renderPanel();
@@ -155,6 +162,9 @@
      * @param {ol.layer.Base} The layer whos visibility will be toggled.
      */
     ol.control.LayerSwitcher.prototype.setVisible_ = function (lyr, visible) {
+        if(lyr==undefined){
+                return;
+        }
         var map = this.getMap();
         lyr.setVisible(visible);
         if (visible && lyr.get('type') === 'base') {
@@ -178,13 +188,12 @@
         var this_ = this;
 
         var li = document.createElement('li');
-
-        var lyrTitle = lyrOpt['title'];
+        var lyrTitle = lyrOpt.get('title');
         var lyrId = ol.control.LayerSwitcher.uuid();
 
         var label = document.createElement('label');
 
-        if (lyrOpt['layers']) {
+        if (lyrOpt.get('layers')) {
 
             li.className = 'group';
             label.innerHTML = lyrTitle;
@@ -192,18 +201,18 @@
             var ul = document.createElement('ul');
             li.appendChild(ul);
 
-            this.renderLayers_(lyrOpt['layers'], ul);
+            this.renderLayers_(lyrOpt.get('layers'), ul);
 
         } else {
 
-            var lyr = lyrOpt['layer']
-
+            var lyr = lyrOpt;
+           
             li.className = 'layer';
             
             var container = document.createElement('div'),
                 input = document.createElement('input'),
                 input_o = document.createElement('input');
-
+            
             if (lyr.get('type') === 'base') {
                 input.type = 'radio';
                 input.name = 'base';
@@ -234,7 +243,7 @@
             container.appendChild(label);
 
             // opacity slider (true|false)
-            if (lyrOpt['enableOpacitySliders']) {
+            if (lyrOpt.get('enableOpacitySliders')) {
                 input_o.type = 'range';
                 input_o.className = 'opacity';
                 input_o.min = 0;
@@ -254,10 +263,10 @@
 
             li.appendChild(container);
 
-            if (lyrOpt['legend']) {
+            if (lyrOpt.legend) {
                 var legend = document.createElement('div');
                 legend.className = 'legend';
-                legend.innerHTML = lyrOpt['legend'];
+                legend.innerHTML = lyrOpt.legend;
                 li.appendChild(legend);
             }
 
@@ -275,9 +284,11 @@
      * @param {Element} elm DOM element that children will be appended to.
      */
     ol.control.LayerSwitcher.prototype.renderLayers_ = function (lyrs, elm) {
-        for (var i = 0, l; i < lyrs.length; i++) {
-            l = lyrs[i];
-            if (l['title']) {
+        for (var i = 0, l; i < lyrs.getArray().length; i++) {
+            l = lyrs.getArray()[i];
+            
+         //var layerprop= l.getProperties();
+            if (l.get('title')) {
                 elm.appendChild(this.renderLayer_(l, i));
             }
         }

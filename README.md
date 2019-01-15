@@ -1,10 +1,8 @@
 # OpenLayers LayerSwitcher
 
-Forked version of Matt Walker's Layer Switcher: https://github.com/walkermatt/ol3-layerswitcher
+Forked version of Matt Walker's Layer Switcher: https://github.com/sookoll/ol3-layerswitcher
 
-Also includes SooKoll's fork which added opacity sliders https://github.com/sookoll/ol3-layerswitcher
-
-Examples have not been updated however here is a quick jsfiddle: https://jsfiddle.net/jnjvynsb/2/
+Froked and modified to work with openlayer 5 (ol@5.3.0)
 
 # How to setup
 
@@ -55,10 +53,6 @@ Examples have not been updated however here is a quick jsfiddle: https://jsfiddl
 
 ## License
 
-MIT (c) Matt Walker.
+MIT (c) 
 
-## Also see
-
-If you find the layer switcher useful you might also like the
-[ol3-popup](https://github.com/walkermatt/ol3-popup).
 
