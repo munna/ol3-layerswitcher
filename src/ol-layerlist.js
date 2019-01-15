@@ -46,20 +46,20 @@ export default class LayerSwitcher extends Control {
         this.onLayerToggle = options.onLayerToggle || null;
         var this_ = this;
 
-        button.onmouseover = function(e) {
-            this_.showPanel();
+        button.onmouseover = (e)=> {
+            this.showPanel();
         };
 
-        button.onclick = function(e) {
+        button.onclick = (e)=> {
             e = e || window.event;
-            this_.showPanel();
+            this.showPanel();
             e.preventDefault();
         };
 
-        this_.panel.onmouseout = function(e) {
+        this_.panel.onmouseout =(e)=> {
             e = e || window.event;
-            if (!this_.panel.contains(e.toElement || e.relatedTarget)) {
-                this_.hidePanel();
+            if (!this.panel.contains(e.toElement || e.relatedTarget)) {
+                this.hidePanel();
             }
         };
 
@@ -175,7 +175,7 @@ export default class LayerSwitcher extends Control {
     * @param {Number} idx Position in parent group list.
     */
     static renderLayer_(map, lyr, idx) {
-
+        var this_ = this;
         var li = document.createElement('li');
 
         var lyrTitle = lyr.get('title');
@@ -238,7 +238,7 @@ export default class LayerSwitcher extends Control {
                 input_o.max = 1;
                 input_o.step = 0.01;
                 input_o.value = lyr.getOpacity();
-                input_o.onchange = function (e) {
+                input_o.onchange = (e)=> {
                     lyr.setOpacity(e.target.value);
 
                     if (this_.onOpacityChange !== null && typeof this_.onOpacityChange === "function") {
