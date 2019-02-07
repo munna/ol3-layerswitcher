@@ -1,6 +1,6 @@
 # OpenLayers LayerSwitcher
 
-Grouped layer list control for an OpenLayer map.
+Grouped layer list control with group selection checkbox for an OpenLayer map. 
 
 To be shown in the layer switcher layers should have a `title` property; base
 layers should have a `type` property set to `base`. Group layers
@@ -11,6 +11,8 @@ toggle. See [Examples](#examples) for usage.
 Compatible with OpenLayers version 3, 4 and 5 (see note in [Install - Parcel,
 Webpack etc.](#parcel-webpack-etc) regarding installing the appropriate version
 of `ol-layerswitcher` for OpenLayers).
+
+
 
 ## Examples
 
@@ -30,13 +32,13 @@ The source for all examples can be found in [examples](examples).
 Load `ol-layerlist.js` after OpenLayers. The layerswitcher control is available as `LayerSwitcher` or `ol.control.LayerSwitcher`.
 
 ```HTML
-<script src="https://unpkg.com/ol-layerlist@1.1.6"></script>
+<script src="https://unpkg.com/ol-layerlist@1.1.8"></script>
 ```
 
 #### CSS
 
 ```HTML
-<link rel="stylesheet" href="https://unpkg.com/ol-layerlist@1.1.6/src/ol-layerlist.css" />
+<link rel="stylesheet" href="https://unpkg.com/ol-layerlist@1.1.8/src/ol-layerlist.css" />
 ```
 
 ### Parcel, Webpack etc.
@@ -49,7 +51,7 @@ Install the package via `npm`
 
     npm install ol-layerlist --save
 
-:warning: If you're using the [`ol` package](https://www.npmjs.com/package/ol) prior to v5 you'll need to install `ol-layerlist@v1.1.6`.
+:warning: If you're using the [`ol` package](https://www.npmjs.com/package/ol) prior to v5 you'll need to install `ol-layerlist@v1.1.8`.
 
 #### CSS
 

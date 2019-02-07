@@ -187,7 +187,7 @@ class LayerSwitcher extends Control {
         var label = document.createElement('label');
 
         if (lyr.getLayers && !lyr.get('combine')) {
-
+            var input = document.createElement('input');
             li.className = 'group';
 
             // Group folding
@@ -198,8 +198,13 @@ class LayerSwitcher extends Control {
                     LayerSwitcher.toggleFold_(lyr, li);
                 };
             }
-
+            input.type = 'checkbox';
+            input.checked = lyr.get('visible');
+            input.onchange = function (e) {
+                LayerSwitcher.setVisible_(map, lyr, e.target.checked);
+            };
             label.innerHTML = lyrTitle;
+            li.appendChild(input);
             li.appendChild(label);
             var ul = document.createElement('ul');
             li.appendChild(ul);

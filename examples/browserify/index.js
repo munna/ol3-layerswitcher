@@ -1,5 +1,5 @@
-var ol = require('openlayers');
-var LayerSwitcher = require('../../src/ol3-layerswitcher');
+var ol = require('ol');
+var LayerSwitcher = require('../../src/ol-layerlist');
 
 var map = new ol.Map({
     target: 'map',
