@@ -20,6 +20,9 @@ The examples demonstrate usage and can be viewed online thanks to [raw.githack.c
 
 -   [Basic usage](https://raw.githubusercontent.com/munna/ol3-layerswitcher/master/examples/layerswitcher.html)
     -   Create a layer switcher control. Each layer to be displayed in the layer switcher has a `title` property as does each Group; each base map layer has a `type: 'base'` property.
+    `allowSelection` property will enable checkbox to show/hide complete group on map.
+    `fold` property will allow you to collaspe\expand group.
+    `enableOpacitySliders` property on layer will enable slider to manage opacity.
 
 The source for all examples can be found in [examples](examples).
 
