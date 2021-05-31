@@ -259,8 +259,10 @@ export default class LayerSwitcher extends Control {
             if (lyr.get('legend')) {
                 var legend = document.createElement('div');
                 legend.className = 'legend';
-                legend.innerHTML = lyrOpt.legend;
-                li.appendChild(lyr.get('legend'));
+                // legend.innerHTML = lyrOpt.legend;
+                // li.appendChild(lyr.get('legend'));
+                legend.innerHTML = lyr.get('legend');  //change 31-05-2021 surinder
+                li.appendChild(legend);
             }
 
 
