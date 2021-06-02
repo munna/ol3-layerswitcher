@@ -246,10 +246,10 @@ export default class LayerSwitcher extends Control {
                 input_o.step = 0.01;
                 input_o.value = lyr.getOpacity();
                 input_o.onchange = (e)=> {
-                    lyr.setOpacity(e.target.value);
+                    lyr.setOpacity(parseFloat(e.target.value) );
 
                     if (this_.onOpacityChange !== null && typeof this_.onOpacityChange === "function") {
-                        this_.onOpacityChange(e.target.value, lyr);
+                        this_.onOpacityChange(parseFloat(e.target.value) , lyr);
                     }
 
                 };
